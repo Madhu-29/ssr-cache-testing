@@ -16,7 +16,8 @@ export default function Caching({ time }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({res}) {
+  res.setHeader("cache-control", "public, max-age=10");
   
   return { props: {  time: new Date().toISOString() } };
 }
