@@ -7,17 +7,16 @@ export default function Caching({ time }) {
     <div className={styles.container}>
       <Head>
         <title>SSR cache testing</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>SSR cache testing</h1>
+        <h1 className={styles.heading}>SSR cache testing</h1>
         <p className={styles.card}>{time}</p>
       </main>
     </div>
   );
 }
 
-export async function getServerSideProps({res}) {
-  res.setHeader("Cache-control","public, max-age=10")
+export async function getServerSideProps() {
+  
   return { props: {  time: new Date().toISOString() } };
 }
